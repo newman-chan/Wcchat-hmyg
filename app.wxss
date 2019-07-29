@@ -1,1 +1,21 @@
-@import"./styles/iconfont.wxss"
+/* 引入字体图标库 */
+@import"./styles/iconfont.wxss";
+
+page,view,navigator,text,swiper,swiper-item,rich-text,button,input,image{
+    /* 內减模式 */
+    box-sizing: border-box
+}
+
+image{
+    /* 设置图片样式默认百分百 */
+    width: 100%;
+}
+
+page{
+    /* 定义主题颜色 */
+    --themeColor:#eb4450;
+    /* 设置默认字体大小和颜色 */
+    /* 14px */
+    font-size: 28rpx;
+    color: #666;
+}
