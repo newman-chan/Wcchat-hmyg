@@ -1,3 +1,10 @@
 .ShowSwiper swiper {
   height: 340rpx;
 }
+.show-nav {
+  display: flex;
+}
+.show-nav navigator {
+  flex: 1;
+  padding: 30rpx;
+}
