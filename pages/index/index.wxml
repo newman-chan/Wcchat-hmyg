@@ -1,1 +1,14 @@
 <Search></Search>
+
+<!-- 轮播图开始 -->
+<view class="ShowSwiper">
+    <swiper indicator-dots autoplay circular>
+        <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+            <navigator>
+                  <image mode="widthFix" src="{{item.image_src}}"></image>
+            </navigator>
+        </swiper-item>
+          
+    </swiper>
+</view>
+<!-- 轮播图结束 -->
