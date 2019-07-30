@@ -8,3 +8,24 @@
   flex: 1;
   padding: 30rpx;
 }
+.show-floor .floor-item .floor-title {
+  padding: 10rpx 0;
+}
+.show-floor .floor-item .floor-content {
+  overflow: hidden;
+  padding: 0 10rpx;
+}
+.show-floor .floor-item .floor-content navigator {
+  width: 33.33%;
+  float: left;
+}
+.show-floor .floor-item .floor-content navigator:nth-last-child(-n+4) {
+  height: 207.97413793rpx;
+  border-left: 10rpx solid #fff;
+}
+.show-floor .floor-item .floor-content navigator:nth-last-child(-n+2) {
+  border-top: 10rpx solid #fff;
+}
+.show-floor .floor-item .floor-content navigator image {
+  height: 100%;
+}
