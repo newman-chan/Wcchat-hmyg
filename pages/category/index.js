@@ -1,66 +1,40 @@
+//导入封装好的发送请求
+import { request } from "../../request/index.js";
+
 // pages/category/index.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    //左侧菜单栏
+    menuList:[],
+    //右侧商品分类
+    goodsList:[],
+    curren:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad() {
+    this.getMenuList()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  //获取分类数据
+  getMenuList(){
+    request({url:'/categories'})
+    .then(res=>{
+      // console.log(res);
+      //map 返回新数组
+      let menuList = res.map((v,i)=>({cat_name:v.cat_name,cat_id:v.cat_id}));
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+      //这是大家电对象里面的children数组
+      let goodsList = res[0].children
+      this.setData({
+        menuList,
+        goodsList
+      })
+    })
   }
 })

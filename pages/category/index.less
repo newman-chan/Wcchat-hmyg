@@ -1,0 +1,62 @@
+.container {
+    height: ~"calc( 100vh - 90rpx )";
+    display: flex;
+    padding-top: 6rpx;
+
+    .left-menu {
+        flex: 1;
+
+        .menu-list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80rpx;
+            color: #000;
+            font-size: 30rpx;
+        }
+
+        .active {
+            color: var(--themeColor);
+            border-left: 5rpx solid currentColor;
+        }
+    }
+
+    .right-goods {
+        flex: 3;
+
+        .right-content {
+
+            .goods-title {
+                height: 80rpx;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .deli {
+                    color: #666;
+                }
+
+                .goods-tities {
+                    padding: 0 14rpx;
+                    color: #000;
+                }
+
+
+            }
+
+            .goods-list {
+                display: flex;
+                flex-wrap: wrap;
+
+                navigator{
+                    width: 33.33%;
+                    text-align: center;
+
+                    image{
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
