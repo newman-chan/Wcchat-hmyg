@@ -2,13 +2,13 @@
 <view class="container">
     <!-- 左侧导航栏 -->
     <scroll-view scroll-y class="left-menu">
-        <view class="menu-list {{curren===index?'active':''}}" wx:for="{{menuList}}" wx:key="cat_id">
+        <view class="menu-list {{curren===index?'active':''}}" wx:for="{{menuList}}" wx:key="cat_id" bindtap='handleMenuChange' data-index="{{index}}">
             {{item.cat_name}}
         </view>
     </scroll-view>
 
     <!-- 右侧商品内容 -->
-    <scroll-view scroll-y class="right-goods">
+    <scroll-view scroll-top="{{scrollTop}}" scroll-y class="right-goods">
         <view class="right-content"
         wx:for="{{goodsList}}"
         wx:for-index="index1"
