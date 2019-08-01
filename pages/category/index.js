@@ -14,6 +14,13 @@ import { request } from "../../request/index.js";
   3 右侧内容切换的时候 再手动给它赋值即可 
  */
 
+/* 实现缓存的需求
+1 发送请求之前 先判断有没有缓存数据  
+  1 假设存入存储中的对象 key='cates'   {time:Date.now(),data:接口的返回值 []}
+2 没有缓存数据 直接发送新请求 获取数据 同时吧新的输入存入到本地存储中  
+3 有缓存数据 并且数据 没有过期 我们自己定一个过期时间 ！！！！
+  此时再使用 缓存数据  */
+
 // pages/category/index.js
 Page({
   /**
@@ -37,7 +44,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    //发送请求之前,先判断本地储存有没有旧数据
+    let cates = wx.getStorageSync('cates');
+    //如果没有数据则发送请求
+    if(!cates){
+      console.log('没数据');
+      
     this.getMenuList()
+    }else{
+      //有数据,判断是否过期
+      if(Date.now() - cates.time >3000){
+        console.log('过期');
+        
+        // 如果过期,则重新渲染
+        this.getMenuList()
+      }else{
+        console.log('没过期');
+        
+        //数据没有过期,则直接渲染
+        this.Cates = cates.data
+
+        let menuList = this.Cates
+
+        let goodsList = this.Cates[0].children
+
+        this.setData({
+          menuList,
+          goodsList,
+        })
+      }
+    }
+      
   },
 
   //获取分类数据
@@ -47,6 +84,10 @@ Page({
       // console.log(res);
       //map 返回新数组
       this.Cates = res
+
+      //把接口数据存入本地储存中
+      wx.setStorageSync('cates', {time:Date.now(),data:this.Cates});
+        
       let menuList = this.Cates.map((v,i)=>({cat_name:v.cat_name,cat_id:v.cat_id}));
 
       //这是大家电对象里面的children数组
