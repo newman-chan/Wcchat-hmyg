@@ -48,19 +48,14 @@ Page({
     let cates = wx.getStorageSync('cates');
     //如果没有数据则发送请求
     if(!cates){
-      console.log('没数据');
       
     this.getMenuList()
     }else{
       //有数据,判断是否过期
       if(Date.now() - cates.time >3000){
-        console.log('过期');
-        
         // 如果过期,则重新渲染
         this.getMenuList()
       }else{
-        console.log('没过期');
-        
         //数据没有过期,则直接渲染
         this.Cates = cates.data
 
